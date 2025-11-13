@@ -13,7 +13,7 @@
     {
       name: 'Music Stats',
       description: 'Display recent Apple music listening history using Apple Music API integration.',
-      url: 'https://github.com/CameronVigil/MusicStats',
+      url: 'https://music-stats-7y55.vercel.app/',
       tech: ['React', 'Node.js', 'Vercel']
     },
     {
