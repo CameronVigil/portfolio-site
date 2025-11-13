@@ -46,8 +46,9 @@
         <!-- Header Section -->
         <header class="header">
           <h1 class="name">{{ personalInfo.name }}</h1>
-          <p class="title">{{ personalInfo.title }}</p>
+          <p class="title">{{    personalInfo.title }}</p>
         </header>
+
 
         <!-- Projects Section -->
         <section class="projects">
