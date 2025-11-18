@@ -21,6 +21,7 @@ interface AsciiCell {
   offsetY: number
   targetOffsetX: number
   targetOffsetY: number
+  speed: number
 }
 
 let cells: AsciiCell[] = []
@@ -136,10 +137,9 @@ const animate = () => {
     if (cell.y + cell.offsetY > rect.height + 20) {
       cell.y = -20 - Math.random() * 50  // Stagger the reset positions
       cell.x = Math.random() * rect.width
-      cell.wobble = Math.random() * Math.PI * 2
       // Optionally reassign a new character
       const chars = [',', '!', 'x', '*', '+', '.', ':', ',']
-      cell.baseChar = chars[Math.floor(Math.random() * chars.length)]
+      cell.baseChar = chars[(Math.floor(Math.random() * chars.length))] ?? '*'
       cell.char = cell.baseChar
     }
     // Draw character
