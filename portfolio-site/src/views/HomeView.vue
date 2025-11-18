@@ -117,7 +117,7 @@
 
   /* Left Panel - ASCII Animation */
   .left-panel {
-    width: 40%;
+    width: 20%;
     height: 100vh;
     position: relative;
     border-right: 2px solid #333;
@@ -126,7 +126,7 @@
 
   /* Right Panel - Content */
   .right-panel {
-    width: 60%;
+    width: 80%;
     height: 100vh;
     background: #020e01;
     color: #fff;

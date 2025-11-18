@@ -8,7 +8,7 @@ let mouseX = 0
 let mouseY = 0
 
 // ASCII characters for different density levels
-const ASCII_CHARS = ['#', '0', '?', '*', '+', ':', '.', ' ']
+  const ASCII_CHARS = ['-', 'z', '!', '*', '+', '.', ':', ',']
 const GRID_SIZE = 12
 const INFLUENCE_RADIUS = 100
 
@@ -53,11 +53,12 @@ const initCanvas = () => {
         x: x * GRID_SIZE,
         y: y * GRID_SIZE,
         char: pattern,
-        baseChar: pattern,
+        baseChar: '',
         offsetX: 0,
         offsetY: 0,
         targetOffsetX: 0,
-        targetOffsetY: 0
+        targetOffsetY: 0,
+        speed: pattern !== ' ' ? 0.5 + Math.random() * 1.5 : 0,
       })
     }
   }
@@ -69,48 +70,11 @@ const getPattern = (x: number, y: number, cols: number, rows: number): string =>
   const centerY = rows / 2
   const dist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2))
   
-  // Create speech bubble patterns
-  const bubble1X = cols * 0.25
-  const bubble1Y = rows * 0.3
-  const bubble1Dist = Math.sqrt(Math.pow(x - bubble1X, 2) + Math.pow(y - bubble1Y, 2))
-  
-  const bubble2X = cols * 0.7
-  const bubble2Y = rows * 0.4
-  const bubble2Dist = Math.sqrt(Math.pow(x - bubble2X, 2) + Math.pow(y - bubble2Y, 2))
-  
-  const bubble3X = cols * 0.5
-  const bubble3Y = rows * 0.7
-  const bubble3Dist = Math.sqrt(Math.pow(x - bubble3X, 2) + Math.pow(y - bubble3Y, 2))
-  
-  // Speech bubble 1 (large)
-  if (bubble1Dist < 15) {
-    if (bubble1Dist > 13) return '#'
-    if (bubble1Dist < 3) return ' '
-    return '#'
-  }
-  
-  // Speech bubble 2 (medium, with D's)
-  if (bubble2Dist < 10) {
-    if (bubble2Dist > 8.5) return '0'
-    if (bubble2Dist < 2) return ' '
-    return 'D'
-  }
-  
-  // Speech bubble 3 (with question marks)
-  if (bubble3Dist < 12) {
-    if (bubble3Dist > 10.5) return '?'
-    if (bubble3Dist < 2.5) return ' '
-    return '?'
-  }
   
   // Add scattered elements
   const noise = Math.sin(x * 0.5) * Math.cos(y * 0.3)
-  if (noise > 0.85) return '/'
-  if (noise < -0.85) return ':'
-  if (Math.random() > 0.95) return '*'
-  if (Math.random() > 0.97) return '+'
-  
-  return ' '
+  if (noise > 0.5) return '(:'
+  return '🍂'
 }
 
 const handleMouseMove = (e: MouseEvent) => {
@@ -133,11 +97,18 @@ const animate = () => {
   
   // Update and draw cells
   cells.forEach(cell => {
+    // Only animate non-empty cells
+    if (cell.baseChar === ' ') return
+
     // Calculate cursor influence
-    const dx = mouseX - cell.x
-    const dy = mouseY - cell.y
+    const dx = mouseX - cell.x - cell.offsetX
+    const dy = mouseY - cell.y - cell.offsetY
     const dist = Math.sqrt(dx * dx + dy * dy)
-    
+
+    let pushX = 0
+    let pushY = 0
+
+
     if (dist < INFLUENCE_RADIUS) {
       const force = (INFLUENCE_RADIUS - dist) / INFLUENCE_RADIUS
       cell.targetOffsetX = (dx / dist) * force * 20
@@ -150,9 +121,29 @@ const animate = () => {
     // Smooth interpolation
     cell.offsetX += (cell.targetOffsetX - cell.offsetX) * 0.1
     cell.offsetY += (cell.targetOffsetY - cell.offsetY) * 0.1
-    
+    // Move cell down and add wobble
+    cell.y += cell.speed/8
+    cell.offsetX = Math.sin(0) * 5 + pushX
+    cell.offsetY = pushY
+    // Move cell down and add wobble
+    cell.y += cell.speed/8
+    cell.offsetX = Math.sin(0) * 5 + pushX
+    cell.offsetY = pushY
     // Draw character
-    if (cell.baseChar !== ' ' && ctx) {
+
+
+    // Reset to top when off screen
+    if (cell.y + cell.offsetY > rect.height + 20) {
+      cell.y = -20 - Math.random() * 50  // Stagger the reset positions
+      cell.x = Math.random() * rect.width
+      cell.wobble = Math.random() * Math.PI * 2
+      // Optionally reassign a new character
+      const chars = [',', '!', 'x', '*', '+', '.', ':', ',']
+      cell.baseChar = chars[Math.floor(Math.random() * chars.length)]
+      cell.char = cell.baseChar
+    }
+    // Draw character
+    if (ctx) {
       ctx.fillText(
         cell.baseChar,
         cell.x + cell.offsetX,
