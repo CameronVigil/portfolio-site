@@ -319,21 +319,22 @@
     }
 
   /* Responsive */
-  @media () {
+  @media (max-width:500px) {
     .portfolio-container {
       flex-direction: column;
     }
 
     .left-panel {
       width: 100vw;
-      height: 40vh;
+      height: 20vh;
       border-right: none;
       border-bottom: 2px solid #333;
     }
 
     .right-panel {
       width: 100vw;
-      height: 60vh;
+      height: 100vh;
+      flex-direction: column;
     }
 
     .content {
@@ -341,7 +342,7 @@
     }
 
     .name {
-      font-size: 36px;
+      font-size: 25px;
     }
   }
 </style>
