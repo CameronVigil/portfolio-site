@@ -31,6 +31,7 @@
     github: 'https://github.com/CameronVigil',
     linkedin: 'https://www.linkedin.com/in/cameron-vigil/'
   }
+  import { RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -94,29 +95,40 @@
   </div>
 </template>
 
-<style scoped>
+<style >
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Optional, but good practice */
+  }
+
+  body, html {
+    margin: 0;
+    padding: 0;
+  }
+
   .portfolio-container {
     display: flex;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background: #000;
+    
   }
 
   /* Left Panel - ASCII Animation */
   .left-panel {
     width: 40%;
-    height: 100%;
-    background: #000;
+    height: 100vh;
     position: relative;
     border-right: 2px solid #333;
+    background: #000;
   }
 
   /* Right Panel - Content */
   .right-panel {
     width: 60%;
-    height: 100%;
-    background: #000;
+    height: 100vh;
+    background: #020e01;
     color: #fff;
     overflow-y: auto;
     position: relative;
@@ -137,17 +149,33 @@
 
   .name {
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: -1px;
     margin: 0 0 12px 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Segoe UI', monospace;
+    background: linear-gradient(135deg, #ffffff 0%, #a8ff78 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(168, 255, 120, 0.3);
+    position: relative;
+    display: inline-block;
+    animation: breathe 4s ease-in-out infinite;
   }
+  @keyframes breathe {
+    0%, 100% {
+      text-shadow: 0 0 20px rgba(168, 255, 120, 0.3);
+    }
 
+    50% {
+      text-shadow: 0 0 30px rgba(168, 255, 120, 0.6);
+    }
+  }
   .title {
     font-size: 18px;
     color: #999;
     margin: 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Segoe UI', monospace;
     letter-spacing: 1px;
   }
 
@@ -158,7 +186,7 @@
     letter-spacing: 3px;
     color: #666;
     margin: 0 0 30px 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Segoe UI', monospace;
   }
 
   /* Projects */
@@ -179,7 +207,6 @@
     text-decoration: none;
     color: #fff;
     transition: all 0.3s ease;
-    background: #000;
   }
 
     .project-item:hover {
@@ -197,7 +224,7 @@
 
   .project-name {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 400;
     margin: 0;
     font-family: 'Courier New', monospace;
   }
@@ -216,7 +243,7 @@
     line-height: 1.6;
     color: #999;
     margin: 0 0 16px 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Segoe UI', monospace;
   }
 
   .tech-stack {
@@ -250,7 +277,7 @@
     color: #fff;
     text-decoration: none;
     font-size: 16px;
-    font-family: 'Courier New', monospace;
+    font-family: 'Segoe UI', monospace;
     letter-spacing: 2px;
     transition: all 0.3s ease;
     position: relative;
@@ -292,20 +319,20 @@
     }
 
   /* Responsive */
-  @media (max-width: 1024px) {
+  @media () {
     .portfolio-container {
       flex-direction: column;
     }
 
     .left-panel {
-      width: 100%;
+      width: 100vw;
       height: 40vh;
       border-right: none;
       border-bottom: 2px solid #333;
     }
 
     .right-panel {
-      width: 100%;
+      width: 100vw;
       height: 60vh;
     }
 

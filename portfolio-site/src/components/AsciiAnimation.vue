@@ -8,9 +8,9 @@ let mouseX = 0
 let mouseY = 0
 
 // ASCII characters for different density levels
-const ASCII_CHARS = ['#', 'D', '?', '*', '+', ':', '.', ' ']
+const ASCII_CHARS = ['#', '0', '?', '*', '+', ':', '.', ' ']
 const GRID_SIZE = 12
-const INFLUENCE_RADIUS = 150
+const INFLUENCE_RADIUS = 100
 
 interface AsciiCell {
   x: number
@@ -91,7 +91,7 @@ const getPattern = (x: number, y: number, cols: number, rows: number): string =>
   
   // Speech bubble 2 (medium, with D's)
   if (bubble2Dist < 10) {
-    if (bubble2Dist > 8.5) return 'D'
+    if (bubble2Dist > 8.5) return '0'
     if (bubble2Dist < 2) return ' '
     return 'D'
   }
@@ -187,6 +187,5 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   display: block;
-  background: #000;
 }
 </style>
