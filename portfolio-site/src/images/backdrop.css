@@ -1,0 +1,214 @@
+<!DOCTYPE html >
+<html lang="en" >
+<head >
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<title > LinkedIn Banner</title >
+<style >
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0a0a0a;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.banner {
+  width: 1584px;
+  height: 396px;
+  background: #020e01;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Static grid background */
+.grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Static code snippets */
+.code-snippet {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(74, 222, 128, 0.4);
+  white-space: nowrap;
+}
+
+  .code-snippet:nth-child(1) {
+    top: 15%;
+    left: 5%;
+    animation-delay: 0s;
+  }
+
+  .code-snippet:nth-child(2) {
+    top: 60%;
+    left: 8%;
+    animation-delay: 3s;
+  }
+
+  .code-snippet:nth-child(3) {
+    top: 30%;
+    right: 10%;
+    animation-delay: 6s;
+  }
+
+  .code-snippet:nth-child(4) {
+    bottom: 20%;
+    right: 15%;
+    animation-delay: 9s;
+  }
+
+/* Main content container */
+.content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 80px;
+  text-align: right;
+}
+
+.title {
+  font-size: 52px;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #4ade80;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+/* Tech stack pills */
+.tech-stack {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+.tech-pill {
+  padding: 8px 16px;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 20px;
+  color: #4ade80;
+  font-size: 14px;
+  font-weight: 300;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+}
+
+/* Stats section */
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 300;
+  color: #4ade80;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 4px;
+}
+
+/* Static decorative elements */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, transparent 70%);
+  opacity: 0.4;
+}
+
+.circle-1 {
+  width: 400px;
+  height: 400px;
+  top: -200px;
+  right: -100px;
+}
+
+.circle-2 {
+  width: 300px;
+  height: 300px;
+  bottom: -150px;
+  left: -50px;
+}
+
+/* Download instruction */
+.download-note {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+}
+
+</style >
+</head >
+<body >
+<div class="banner" >
+<!-- Background elements -->
+<div class="circle circle-1" > </div >
+<div class="circle circle-2" > </div >
+<!-- Main content -->
+<div class="content" >
+<h1 class="title" > Full-Stack Developer</h1 >
+<p class="subtitle" > Backend Specialist | Enterprise Applications</p >
+
+<div class="tech-stack" >
+<span class="tech-pill" > C# / .NET Core</span >
+<span class="tech-pill" > SQL</span >
+<span class="tech-pill" > REST APIs</span >
+<span class="tech-pill" > React</span >
+<span class="tech-pill" > JavaScript</span >
+<span class="tech-pill" > Git</span >
+<span class="tech-pill" > Agile/Scrum</span >
+</div >
+
+<div class="stats" >
+<div class="stat-item" >
+<span class="stat-number" > 2 Years</span >
+<span class="stat-label" > Enterprise Experience</span >
+</div >
+</div >
+</div >
+
+<div class="download-note" > Right-click → Save image as...</div >
+</div >
+</body >
+</html >

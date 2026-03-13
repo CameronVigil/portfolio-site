@@ -1,14 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\e2e",
-    "\\public",
-    "\\src",
-    "\\src\\components",
-    "\\src\\components\\icons",
-    "\\src\\router",
-    "\\src\\stores",
-    "\\src\\views"
+    ""
   ],
+  "SelectedNode": "\\.editorconfig",
   "PreviewInSolutionExplorer": false
 }
