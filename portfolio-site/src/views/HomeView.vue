@@ -11,6 +11,12 @@
   // Replace with your actual projects
   const projects: Project[] = [
     {
+      name: 'Desktop Mixer',
+      description: 'Windows application that provides an audio mixer to adjust and sidechain all desktop audios.',
+      url: 'https://github.com/CameronVigil/DesktopMixer',
+      tech: ['Vue', 'C#', 'ASP.NET Core', 'NAudio/WASAPI']
+    },
+    {
       name: 'Music Stats',
       description: 'Display recent Apple music listening history using Apple Music API integration.',
       url: 'https://music-stats-7y55.vercel.app/',
